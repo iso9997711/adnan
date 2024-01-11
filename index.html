@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adnan VIP Manager - Özel Arka Ofis</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #87CEFA; /* Açık mavi arka plan rengi */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #formContainer {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            box-sizing: border-box;
+            max-width: 90%; /* Maksimum genişlik: Ekranın yüzde 90'u */
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div id="formContainer">
+        <h1>Adnan VIP Manager - Özel Arka Ofis</h1>
+
+        <label for="mail">Mail Adresi:</label>
+        <input type="text" id="mail" name="mail" required>
+
+        <label for="username">Kullanıcı Adı:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="userCode">Kullanıcı Kodu:</label>
+        <input type="text" id="userCode" name="userCode" required>
+
+        <label for="status">Statü Adı:</label>
+        <input type="text" id="status" name="status" required>
+
+        <label for="brand">Marka:</label>
+        <input type="text" id="brand" name="brand" required>
+
+        <label for="phone">Telefon Numarası:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <label for="birthDate">Doğum Tarihi:</label>
+        <input type="date" id="birthDate" name="birthDate" required>
+
+        <label for="statusOptions">Statü Seçiniz:</label>
+        <select id="statusOptions" name="statusOptions">
+            <option value="VIP1">VIP 1</option>
+            <option value="VIP2">VIP 2</option>
+        </select>
+
+        <label>Promosyonlar:</label>
+        <input type="checkbox" id="promo1" name="promo1"> <label for="promo1">Promo 1</label>
+        <input type="checkbox" id="promo2" name="promo2"> <label for="promo2">Promo 2</label>
+        <input type="checkbox" id="promo3" name="promo3"> <label for="promo3">Promo 3</label>
+
+        <button onclick="saveFormData()">Kaydet</button>
+    </div>
+
+    <script>
+        class User {
+            constructor(mail, username, userCode, status, brand, phone, birthDate, statusOptions, promos) {
+                this.mail = mail;
+                this.username = username;
+                this.userCode = userCode;
+                this.status = status;
+                this.brand = brand;
+                this.phone = phone;
+                this.birthDate = birthDate;
+                this.statusOptions = statusOptions;
+                this.promos = promos;
+            }
+        }
+
+        let userList = [];
+
+        function saveFormData() {
+            var mail = document.getElementById('mail').value;
+            var username = document.getElementById('username').value;
+            var userCode = document.getElementById('userCode').value;
+            var status = document.getElementById('status').value;
+            var brand = document.getElementById('brand').value;
+            var phone = document.getElementById('phone').value;
+            var birthDate = document.getElementById('birthDate').value;
+            var statusOptions = document.getElementById('statusOptions').value;
+            var promo1 = document.getElementById('promo1').checked;
+            var promo2 = document.getElementById('promo2').checked;
+            var promo3 = document.getElementById('promo3').checked;
+
+            var newUser = new User(mail, username, userCode, status, brand, phone, birthDate, statusOptions, [promo1, promo2, promo3]);
+            userList.push(newUser);
+
+            console.log("Kullanıcı Bilgileri:");
+            console.log(newUser);
+
+            console.log("Kullanıcı Listesi:");
+            console.log(userList);
+        }
+    </script
